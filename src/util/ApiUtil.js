@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const API_BASE_URL = "http://localhost:8080"
 
-constframeToken = (token) => `Bearer ${token}`;
+const frameToken = (token) => `Bearer ${token}`;
 
 const frameResponse = (reqStatus = 0, reqPayLoad = "Invalid request. Please try again later") => {
 
