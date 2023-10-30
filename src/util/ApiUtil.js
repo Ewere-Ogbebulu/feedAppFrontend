@@ -12,25 +12,25 @@ const frameResponse = (reqStatus = 0, reqPayLoad = "Invalid request. Please try 
         status: reqStatus,
         payLoad: reqPayLoad
     }
-} 
+}
 
 
-export const registerApi = async (username, password, emailId, firstName, lastName, phone)=>{
+export const registerApi = async (username, password, emailId, firstName, lastName, phone) => {
 
     let response = frameResponse();
 
-    try{
+    try {
 
-        const url= `${API_BASE_URL}/user/signup`
+        const url = `${API_BASE_URL}/user/signup`
 
-        const apiResponse = await axios.post(url, {username, password, emailId, firstName, lastName, phone})
-        if(apiResponse.status===200){
+        const apiResponse = await axios.post(url, { username, password, emailId, firstName, lastName, phone })
+        if (apiResponse.status === 200) {
             response = frameResponse(1);
         }
     }
-    catch(err) {
-        if(err.response){
-            response= frameResponse(0, err.response.data.message);
+    catch (err) {
+        if (err.response) {
+            response = frameResponse(0, err.response.data.message);
         }
         console.log(err);
     }
@@ -38,3 +38,25 @@ export const registerApi = async (username, password, emailId, firstName, lastNa
         return response;
     }
 }
+
+export const verifyEmailApi = async (token) => {
+    let response = frameResponse();
+
+    try {
+        const url = `${API_BASE_URL}/user/verify/email`;
+        const apiResponse = await axios.get(url, {
+            headers: { Authorization: frameToken(token) },
+        });
+        if (apiResponse.status === 200) {
+            response = frameResponse(1, apiResponse.data);
+        }
+    } catch (err) {
+        if (err.response) {
+            response = frameResponse(0, err.response.data.message);
+        }
+        console.log(err);
+    } finally {
+        return response;
+    }
+
+};
