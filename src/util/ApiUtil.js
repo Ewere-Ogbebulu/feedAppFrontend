@@ -148,7 +148,7 @@ export const sessionApi = async (token) => {
     }
 };
 
-export const updateProfileApi = async (token, bio, city, country, headline, picture) => {
+export const updatePublicProfileApi = async (token, bio, city, country, headline, picture) => {
 
     let response = frameResponse;
 

@@ -8,7 +8,7 @@ import BigTextField from './BigTextField'
 import Button from './Button'
 import ImageCropper from './ImageCropper'
 
-import { updateProfileApi } from '../util/ApiUtil';
+import { updatePublicProfileApi } from '../util/ApiUtil';
 import { AppContext } from '../context/applicationContext'
 import { convertBase64 } from '../util/Helper';
 
