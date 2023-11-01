@@ -177,7 +177,7 @@ export const updatePublicProfileApi = async (token, bio, city, country, headline
 
 }
 
-export const getOtherFeedsApi = async (token, pageNum) => {
+export const getOthersFeedsApi = async (token, pageNum) => {
 
     let response = frameResponse;
 
