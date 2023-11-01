@@ -3,6 +3,7 @@ import { AppContext } from '../../context/applicationContext';
 import LoadingIndicator from '../../components/LoadingIndicator'
 import { getOthersFeedsApi } from '../../util/ApiUtil';
 import MyProfile from '../../components/MyProfile';
+import AddFeed from "../../components/AddFeed";
 
 const Dashboard = () => {
 
@@ -57,6 +58,7 @@ const Dashboard = () => {
       <MyProfile />
       <article>
         {/* {#AddFeed Component} */}
+        <AddFeed/>
         {/* {#FeedCard Component} */}
       </article>
     </main>
