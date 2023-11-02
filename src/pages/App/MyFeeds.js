@@ -11,6 +11,7 @@ import LoadingIndicator from "../../components/LoadingIndicator";
 import { getMyFeedsApi } from "../../util/ApiUtil";
 
 
+
 const MyFeeds = () => {
 
   const appContext = useContext(AppContext);
@@ -54,6 +55,8 @@ const MyFeeds = () => {
     return <LoadingIndicator />;
   }
 
+ 
+
   return (
     <main className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-12 md:mx-12 w-2xl container px-2 mx-auto">
       {/* {#MyProfile Component} */}
@@ -81,7 +84,7 @@ const MyFeeds = () => {
         >
           <div className="mt-3">
             {feedsData.map(
-              ({ feedId, picture, content, createdOn, feedMetaData, user }) => (
+              ({ feedId, picture, content, createdOn, feedMetaData,  user }) => (
                 <FeedCard
                   key={feedId}
                   feedId={feedId}
@@ -93,6 +96,9 @@ const MyFeeds = () => {
                   lastName={user.lastName}
                   profilePicture={user.profile.picture}
                   feedMetaData={feedMetaData}
+                  loadOnDelete={getMyFeeds}
+                  
+                  
                 />
               )
             )}
