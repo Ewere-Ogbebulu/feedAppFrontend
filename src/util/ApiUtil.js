@@ -185,17 +185,17 @@ export const getOthersFeedsApi = async (token, pageNum) => {
         const url = `${API_BASE_URL}/feeds/other/${pageNum}/5`;
         const apiResponse = await axios.get(url, { headers: { Authorization: frameToken(token) } });
 
-        if (apiResponse.status === 200){
+        if (apiResponse.status === 200) {
             response = frameResponse(1, apiResponse.data);
         }
     }
-    catch(err){
-        if(err.response){
-            response = frameResponse(0,err.response.data.message)
+    catch (err) {
+        if (err.response) {
+            response = frameResponse(0, err.response.data.message)
         }
         console.log(err);
     }
-    finally{
+    finally {
         return response;
     }
 
@@ -207,71 +207,106 @@ export const addFeedApi = async (token, content, picture) => {
     try {
         const url = `${API_BASE_URL}/feeds`;
         const apiResponse = await axios.post(
-          url,
-          {
-            content,
-            picture,
-          },
-          { headers: { Authorization: frameToken(token) } }
+            url,
+            {
+                content,
+                picture,
+            },
+            { headers: { Authorization: frameToken(token) } }
         );
         if (apiResponse.status === 200) {
-          response = frameResponse(1);
+            response = frameResponse(1);
         }
-      } catch (err) {
+    } catch (err) {
         if (err.response) {
-          response = frameResponse(0, err.response.data.message);
+            response = frameResponse(0, err.response.data.message);
         }
         console.log(err);
-      } finally {
+    } finally {
         return response;
-      }
-  };
+    }
+};
 
-  export const addFeedMetaDataApi = async (token, feedId, isLike, comment) => {
+export const addFeedMetaDataApi = async (token, feedId, isLike, comment) => {
     let response = frameResponse();
 
     try {
         const url = `${API_BASE_URL}/feeds/meta/${feedId}`;
         const apiResponse = await axios.post(
-          url,
-          {
-            isLike,
-            comment,
-          },
-          { headers: { Authorization: frameToken(token) } }
+            url,
+            {
+                isLike,
+                comment,
+            },
+            { headers: { Authorization: frameToken(token) } }
         );
         if (apiResponse.status === 200) {
-          response = frameResponse(1);
+            response = frameResponse(1);
         }
-      } catch (err) {
+    } catch (err) {
         if (err.response) {
-          response = frameResponse(0, err.response.data.message);
+            response = frameResponse(0, err.response.data.message);
         }
         console.log(err);
-      } finally {
+    } finally {
         return response;
-      }
-  };
+    }
+};
 
-  export const getMyFeedsApi = async (token, pageNumber) => {
+export const getMyFeedsApi = async (token, pageNumber) => {
 
-   let response = frameResponse();
+    let response = frameResponse();
 
     try {
         const url = `${API_BASE_URL}/feeds/user/${pageNumber}/5`;
         const apiResponse = await axios.get(url, {
-          headers: { Authorization: frameToken(token) },
+            headers: { Authorization: frameToken(token) },
         });
         if (apiResponse.status === 200) {
-          response = frameResponse(1, apiResponse.data);
+            response = frameResponse(1, apiResponse.data);
         }
-      } catch (err) {
+    } catch (err) {
         if (err.response) {
-          response = frameResponse(0, err.response.data.message);
+            response = frameResponse(0, err.response.data.message);
         }
         console.log(err);
-      } finally {
+    } finally {
         return response;
-      }
+    }
 
-  }
+}
+
+export const updateBasicProfileApi = async (
+    token,
+    password,
+    emailId,
+    firstName,
+    lastName,
+    phone
+) => {
+    let response = frameResponse();
+    try {
+        const url = `${API_BASE_URL}/user/update`;
+        const apiResponse = await axios.post(
+            url,
+            {
+                password,
+                emailId,
+                firstName,
+                lastName,
+                phone,
+            },
+            { headers: { Authorization: frameToken(token) } }
+        );
+        if (apiResponse.status === 200) {
+            response = frameResponse(1, apiResponse.data);
+        }
+    } catch (err) {
+        if (err.response) {
+            response = frameResponse(0, err.response.data.message);
+        }
+        console.log(err);
+    } finally {
+        return response;
+    }
+};
