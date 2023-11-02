@@ -16,6 +16,13 @@ const UpdateBasicProfile = ({
     phone = "",
 }) => {
 
+    const formikRef = useRef();
+
+    const [isFetching, setIsFetching] = useState(false);
+
+    const appContext = useContext(AppContext);
+    const token = appContext.getSession();
+
     const onFormSubmit = async (values) => {
         if (!isFetching) {
             setIsFetching(true);
