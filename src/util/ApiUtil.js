@@ -253,9 +253,9 @@ export const addFeedApi = async (token, content, picture) => {
       }
   };
 
-  export const getMyFeedsApi = async = (token, pageNumber){
+  export const getMyFeedsApi = async (token, pageNumber) => {
 
-    response = frameResponse();
+   let response = frameResponse();
 
     try {
         const url = `${API_BASE_URL}/feeds/user/${pageNumber}/5`;
